@@ -1,6 +1,7 @@
 package com.circus.jpastudy.store;
 
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Getter
 @Entity
 @NoArgsConstructor
 public class Store extends BaseEntity  {
@@ -43,32 +45,28 @@ public class Store extends BaseEntity  {
     }
 
     public Store(StoreRegisterDTO storeRegisterDTO) {
-        Store.builder()
-                .storeName(storeRegisterDTO.getStoreName())
-                .storePhone(storeRegisterDTO.getStorePhone())
-                .bossName(storeRegisterDTO.getBossName())
-                .address(storeRegisterDTO.getAddress())
-                .number(storeRegisterDTO.getNumber())
-                .intro(storeRegisterDTO.getIntro())
-                .opening(storeRegisterDTO.getOpening())
-                .breaktime(storeRegisterDTO.getBreaktime())
-                .holiday(storeRegisterDTO.getHoliday())
-                .temholiday(storeRegisterDTO.getTemholiday())
-                .build();
+        this.storeName = storeRegisterDTO.getStoreName();
+        this.storePhone = storeRegisterDTO.getStorePhone();
+        this.bossName = storeRegisterDTO.getBossName();
+        this.address = storeRegisterDTO.getAddress();
+        this.number = storeRegisterDTO.getNumber();
+        this.intro = storeRegisterDTO.getIntro();
+        this.opening = storeRegisterDTO.getOpening();
+        this.breaktime = storeRegisterDTO.getBreaktime();
+        this.holiday = storeRegisterDTO.getHoliday();
+        this.temholiday = storeRegisterDTO.getTemholiday();
     }
 
     public void update(StoreRegisterDTO storeRegisterDTO) {
-        Store.builder()
-                .storeName(storeRegisterDTO.getStoreName())
-                .storePhone(storeRegisterDTO.getStorePhone())
-                .bossName(storeRegisterDTO.getBossName())
-                .address(storeRegisterDTO.getAddress())
-                .number(storeRegisterDTO.getNumber())
-                .intro(storeRegisterDTO.getIntro())
-                .opening(storeRegisterDTO.getOpening())
-                .breaktime(storeRegisterDTO.getBreaktime())
-                .holiday(storeRegisterDTO.getHoliday())
-                .temholiday(storeRegisterDTO.getTemholiday())
-                .build();
+        this.storeName = storeRegisterDTO.getStoreName();
+        this.storePhone = storeRegisterDTO.getStorePhone();
+        this.bossName = storeRegisterDTO.getBossName();
+        this.address = storeRegisterDTO.getAddress();
+        this.number = storeRegisterDTO.getNumber();
+        this.intro = storeRegisterDTO.getIntro();
+        this.opening = storeRegisterDTO.getOpening();
+        this.breaktime = storeRegisterDTO.getBreaktime();
+        this.holiday = storeRegisterDTO.getHoliday();
+        this.temholiday = storeRegisterDTO.getTemholiday();
     }
 }

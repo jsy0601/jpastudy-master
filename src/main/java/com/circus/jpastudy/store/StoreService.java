@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,5 +28,9 @@ public class StoreService {
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
         );
         store.update(storeRegisterDTO);
+    }
+
+    public Optional<Store> findById(Long id) {
+        return storeRepository.findById(id);
     }
 }

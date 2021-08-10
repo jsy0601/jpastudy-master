@@ -13,8 +13,6 @@ public class StoreController {
 
     private final StoreService storeService;
 
-    private final StoreRepository storeRepository;
-
     @GetMapping("/addStore")
     public String addStore(Model model) {
         model.addAttribute("storeRegisterDTO", new StoreRegisterDTO());
@@ -30,8 +28,21 @@ public class StoreController {
     }
 
     @GetMapping("/storeInfo/{id}")
-    public String updateStore(Model model) {
-        model.addAttribute("storeRegisterDTO", new StoreRegisterDTO());
+    public String updateStore(@PathVariable Long id, Model model) {
+        Store store = storeService.findById(id).get();
+        StoreRegisterDTO storeRegisterDTO = new StoreRegisterDTO();
+        storeRegisterDTO.setStoreName(store.getStoreName());
+        storeRegisterDTO.setStorePhone(store.getStorePhone());
+        storeRegisterDTO.setBossName(store.getBossName());
+        storeRegisterDTO.setAddress(store.getAddress());
+        storeRegisterDTO.setNumber(store.getNumber());
+        storeRegisterDTO.setIntro(store.getIntro());
+        storeRegisterDTO.setOpening(store.getOpening());
+        storeRegisterDTO.setBreaktime(store.getBreaktime());
+        storeRegisterDTO.setHoliday(store.getTemholiday());
+        storeRegisterDTO.setTemholiday(store.getTemholiday());
+
+        model.addAttribute("storeRegisterDTO", storeRegisterDTO);
 
         return "storeInfoForm";
     }
@@ -39,6 +50,6 @@ public class StoreController {
     @PostMapping("/storeInfo/{id}")
     public String updateStore(@PathVariable Long id, @ModelAttribute StoreRegisterDTO storeRegisterDTO) {
         storeService.update(id, storeRegisterDTO);
-        return "redirect:/storeInfoForm";
+        return "redirect:/storeInfo"+id;
     }
 }
